@@ -1,0 +1,17 @@
+COMO SE AUTENTICAN LOS MICROSERVICIOS CLIENTES.
+	Necesita infromar de las credenciales en la cabecera de la petición a través de los INTERCEPTORES
+	¿que es un INTERCEPTOR?
+		Es un objeto que realiza una tarea cuando se produce una petición.
+		Asociamos un interceptor a un restTemplate, cuando desde ese resttemplate hagamos una petición se va a mandar
+		con las credenciales en la cabecera.
+		
+		1. Añadimos el interceptor
+		
+	@Bean
+	public RestTemplate template() {
+		BasicAuthenticationInterceptor inter;
+		inter= new BasicAuthenticationInterceptor("admin","admin");
+		RestTemplate template=new RestTemplate();
+		template.getInterceptors().add(inter);
+		return template;
+	}
